@@ -1,6 +1,6 @@
 <template>
     <div>
-        <span>Tarefas ({{tasksDone}}/{{totalTasks}})</span>
+        <span class="text-2xl">Tarefas ({{tasksDone}}/{{totalTasks}})</span>
     </div>
 </template>
 
