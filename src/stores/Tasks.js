@@ -19,20 +19,32 @@ export const tasksStore = defineStore('tasks', {
                 isCompleted: true,
                 id: 2
             }),
-        ]
+        ],
+        selectedId: -1,
+        editing: -1
     }),
     getters: {
+        //
+    },
+    actions: {
         getCompleted() {
-            return this.tasks.filter(task =>task.isTaskCompleted())
+            return this.tasks.filter(task => task.isTaskCompleted())
         },
         getIncompleted() {
             return this.tasks.filter(task => !task.isTaskCompleted())
         },
+        getSelectedTask(){
+            return this.tasks[this.getTaskIndexFromId(this.selectedId)]
+        },
         getTaskIndexFromId(id) {
             return this.tasks.findIndex(task => task.id === id)
-        }
-    },
-    actions: {
+        },
+        selectTask(id) {
+            if (this.getTaskIndexFromId(id) != -1) this.selectedId = id
+        },
+        resetSelectedTask(){
+            this.selected = -1
+        },
         addTask(task){
             try{
                 let newTask = new Task(task)

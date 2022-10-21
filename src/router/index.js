@@ -15,6 +15,11 @@ const routes = [
     name: 'taskEdit', 
     path: '/task/edit/:id', 
     component: () => import('./../views/TaskEdit.vue') 
+  },
+  {
+    name: 'notFound',
+    path: "/:pathMatch(.*)", 
+    component: () => import('./../views/notFound.vue') 
   }
 
   // Routes Examples

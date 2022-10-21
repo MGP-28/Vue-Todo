@@ -4,6 +4,8 @@ export default class Task{
         this.id = task.id
         this.description = task.description
         this.isCompleted = task.isCompleted
+        if (task.createdAt) this.createdAt = task.createdAt
+        else this.createdAt = new Date(Date.now())
     }
     updateTask(task){
         this.description = task.description

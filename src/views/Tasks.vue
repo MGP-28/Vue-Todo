@@ -8,9 +8,9 @@
                 <button class="btn btn-primary border" @click="createTask">Criar</button>
             </div>
         </div>
-        <div class="tasks-container border p-2">
+        <ContentContainer>
             <TaskCard v-for="(task, idx) in filteredTasks" :task="task" :key="idx"/>
-        </div>
+        </ContentContainer>
     </div>
 </template>
 
@@ -19,6 +19,7 @@ import { mapState, mapActions } from 'pinia'
 import { tasksStore } from '../stores/Tasks'
 import TaskCard from '../components/TaskCard.vue';
 import TaskCounter from '../components/taskCounter.vue';
+import ContentContainer from '../components/ContentContainer.vue';
     export default {
     name: "TasksView",
     data() {
@@ -83,15 +84,11 @@ import TaskCounter from '../components/taskCounter.vue';
             }
         }
     },
-    components: { TaskCard, TaskCounter }
+    components: { TaskCard, TaskCounter, ContentContainer }
 }
 </script>
 
 <style scoped>
-.content-container{
-    display: grid;
-    gap: 20px;
-}
 .toolbar-container{
     display: flex;
     justify-content: space-between;
@@ -101,11 +98,6 @@ import TaskCounter from '../components/taskCounter.vue';
 }
 .toolbar{
     display: flex;
-    gap: 10px;
-}
-.tasks-container{
-    display: flex;
-    flex-direction: column;
     gap: 10px;
 }
 </style>
